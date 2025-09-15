@@ -1,0 +1,181 @@
+/* 
+   THEME VARIABLES
+   - Define reusable colors, shadows, and radius
+   - Helps keep code clean & consistent
+ */
+:root {
+  --bg1: #f0f7ff;
+  --bg2: #e8f3ff;
+  --accent: #ff6f61;
+  --accent-2: #ff8b74;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --radius: 12px;
+}
+
+/* Reset & base layout */
+* { box-sizing: border-box; }
+html,body { 
+  height: 100%; 
+  margin: 0; 
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; 
+}
+
+/* Background layout (gradient + centering) */
+body {
+  background: linear-gradient(160deg,var(--bg1),var(--bg2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
+}
+
+/* Container */
+.page {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/*
+   HEADER SECTION
+   - Titles and subtitles
+*/
+.hero { text-align: center; margin-bottom: 28px; }
+.title { margin: 0; font-size: 1.9rem; letter-spacing: -0.02em; }
+.subtitle { margin: 6px 0 0; color: var(--muted); }
+
+/* 
+   GRID LAYOUT
+   - Flexible responsive cards
+*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Card styling */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(30,40,60,0.06);
+}
+
+/* Headings inside demos */
+.demo h3 { margin: 0 0 12px; font-size: 1.05rem; }
+.note { color: var(--muted); font-size: 0.85rem; margin-top: 12px; }
+
+/* 
+   BUTTON HOVER DEMO
+   - Transition property creates smooth effect
+ */
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: #ddd;
+
+  /* Transition: smooth transform, shadow & bg */
+  transition: 
+    transform 250ms cubic-bezier(.2,.8,.2,1), 
+    box-shadow 250ms ease, 
+    background 250ms ease;
+
+  /* Performance hint: tells browser this will animate */
+  will-change: transform;
+}
+
+/* Accent button (gradient + shadow) */
+.btn--accent {
+  background: linear-gradient(0deg,var(--accent),var(--accent-2));
+  color: white;
+  box-shadow: 0 6px 18px rgba(255,111,97,0.22);
+}
+
+/* Hover effect */
+.btn--accent:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(255,111,97,0.18);
+}
+
+/*
+   CARD FLIP DEMO
+   - Uses perspective + 3D transform
+ */
+.card-flip { 
+  width: 220px; height: 130px; 
+  perspective: 1000px; 
+  margin: 6px 0; 
+}
+.card-flip__inner {
+  width: 100%; height: 100%;
+  transition: transform 700ms cubic-bezier(.2,.8,.2,1);
+  transform-style: preserve-3d;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(20,30,50,0.08);
+}
+.card-flip:hover .card-flip__inner { transform: rotateY(180deg); }
+
+.card-flip__face {
+  position: absolute;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  border-radius: 10px;
+  backface-visibility: hidden; /* Hides back until flipped */
+}
+.card-flip__front {
+  background: linear-gradient(180deg,#fff,#f7f9ff);
+  color: #0f1724;
+}
+.card-flip__back {
+  background: linear-gradient(180deg,#ffd9c7,#fff2ec);
+  color: #2b0500;
+  transform: rotateY(180deg);
+}
+
+/*
+   PULSE ANIMATION
+   - Grows & fades smoothly
+   - Loops infinitely
+*/
+.pulse-box {
+  width: 84px; height: 84px; border-radius: 12px;
+  background: linear-gradient(180deg,#ffdfd8,#ffb6a0);
+  animation: pulse 1.8s ease-in-out infinite;
+  margin: 6px 0;
+  box-shadow: 0 8px 20px rgba(255,140,120,0.12);
+}
+
+/* 
+   SPINNER LOADER
+   - Conic gradient + rotation
+*/
+.spinner {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: conic-gradient(#ff6f61, #ffd9c7, #ff6f61);
+  animation: spin 2.5s linear infinite;
+  margin: 6px 0;
+  filter: blur(0.02px); /* Sharpens edges */
+}
+
+/* KEYFRAMES
+   - Reusable animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.08); opacity: 0.92; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Footer */
+.footer { margin-top: 18px; color: var(--muted); font-size: 0.9rem; text-align: center; }

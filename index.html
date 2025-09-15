@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CSS Animations Playground</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <!-- HEADER SECTION
+         - Introduces the page
+         - Shows title & subtitle-->
+         
+    <header class="hero">
+      <h1 class="title">Animations & Transitions</h1>
+      <p class="subtitle">Hover, watch, and learn.</p>
+    </header>
+
+    <!--GRID CONTAINER
+         - Holds all demos
+         - Each demo is in a .card-->
+    <section class="grid">
+
+      <!-- DEMO 1: Button Hover
+           - Uses CSS transition
+           - Changes background & scale smoothly -->
+
+      <div class="card demo">
+        <h3>Button Hover</h3>
+        <button class="btn btn--accent">Hover me</button>
+        <p class="note">Uses <code>transition</code> on <code>transform</code> &amp; <code>background</code>.</p>
+      </div>
+
+      <!-- DEMO 2: Card Flip
+           - Uses 3D transform + transition
+           - Rotates on hover -->
+      <div class="card demo">
+        <h3>Card Flip</h3>
+        <div class="card-flip">
+          <div class="card-flip__inner">
+            <div class="card-flip__face card-flip__front">Front</div>
+            <div class="card-flip__face card-flip__back">Back</div>
+          </div>
+        </div>
+        <p class="note">Hover to rotate (preserve-3d).</p>
+      </div>
+
+      <!--DEMO 3: Pulse Animation
+           - Uses CSS @keyframes
+           - Runs infinitely-->
+      <div class="card demo">
+        <h3>Pulse (infinite)</h3>
+        <div class="pulse-box"></div>
+        <p class="note">Uses <code>@keyframes</code> &amp; runs continuously.</p>
+      </div>
+
+      <!--  DEMO 4: Loader Spinner
+           - Uses conic-gradient
+           - Spins with CSS animation-->
+      <div class="card demo">
+        <h3>Loader / Spin</h3>
+        <div class="spinner"></div>
+        <p class="note">Animation runs automatically (time-based trigger).</p>
+      </div>
+
+      <!--DEMO 5: JS Functions
+           - Shows function, scope, return
+           - JS triggers CSS animations-->
+      <div class="card demo">
+        <h3>JS-Enhanced Buttons</h3>
+
+        <!-- Multiply numbers with a function -->
+        <button class="btn btn--accent" id="multiplyBtn">Multiply 7x8</button>
+
+        <!-- Trigger spinner with JS -->
+        <button class="btn" id="spinBtn">Spin Once</button>
+
+        <!-- Flip card dynamically -->
+        <button class="btn" id="flipBtn">Flip Card</button>
+
+        <p class="note">These buttons trigger JavaScript functions ✨</p>
+      </div>
+    </section>
+
+    <!--FOOTER SECTION
+         - Closing note
+         - Helpful tip -->
+    <footer class="footer">
+      <p>Tip: open devtools → Elements to watch CSS applied and see computed styles.</p>
+    </footer>
+  </main>
+
+  <!-- LINKING JAVASCRIPT FILE
+       - Handles functions
+       - Controls animations
+       - Demonstrates scope-->
+  <script src="script.js"></script>
+</body>
+</html>
